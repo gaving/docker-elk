@@ -5,6 +5,10 @@ ES bundled with SG and functionality enabled:-
 - JWT
 - Audit
 
+![1](contrib/screens/1.png)
+
+![2](contrib/screens/2.png)
+
 ## Run
 
 - `docker-compose up`
