@@ -17,11 +17,24 @@ discovery.type: single-node
 
 ## Search Guard
 #
-searchguard.enterprise_modules_enabled: false
+searchguard.enterprise_modules_enabled: true
 
 searchguard.ssl.transport.keystore_filepath: sg/node-0-keystore.jks
 searchguard.ssl.transport.truststore_filepath: sg/truststore.jks
 searchguard.ssl.transport.enforce_hostname_verification: false
 
+searchguard.restapi.roles_enabled: ["sg_all_access"] 
+
 searchguard.authcz.admin_dn:
   - "CN=kirk,OU=client,O=client,l=tEst,C=De"
+
+searchguard.audit.type: internal_elasticsearch
+searchguard.audit.config.index: auditlog
+searchguard.audit.config.disabled_rest_categories: NONE
+searchguard.audit.config.disabled_transport_categories: NONE
+searchguard.audit.ignore_users:
+  - kibanaserver
+  - admin
+
+searchguard.compliance.history.read.watched_fields:
+  - bank,*

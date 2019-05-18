@@ -4,8 +4,30 @@ searchguard:
       xff:
         enabled: false
     authc:
+      jwt_auth_domain:
+        enabled: true
+        order: 0
+        http_authenticator:
+          type: jwt
+          challenge: false
+          config:
+            signing_key: |-
+              -----BEGIN PUBLIC KEY-----
+              MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4yZgtxYW5wk9wc/59fZKlbTiVwJOOQRGBTbvttdi4yyA6ZWM/0FFquwzPgTkvXfHrJfxe2UD1lF7z+vI83g2UhZ7iix/0QsEk6be6yjlu6wKxJp5R/Smyot2hdMUOG/w1eFG3KIp668bIKZcVmGVcCH9ZwHjv11PrGGfjJjdYoZQaVuUfieLjZ1uCXeLeHX+abnYD2ZRzxmFsqIEvCWH1970Qaxqz/IfkkHJD7iEakA1Z7RA0FaLskqc1ynpgkMaYYRH5cJIETSfW+3MGSAzlTz4WapLfE/OmYo2JDDC/RokZ+O/Br+X6SYbBfiZOmx3Z7yAuDaRoJpnTHVv9r22CnshP0bswBUKXWPXzs2qxFhcquoe2NGGpxlEoBS522errnDT4fzijPsPv58Zr9VXdt7KqEHP2dGUZXPj+KJRw3oD+jjz/5ai3N2iFK1Obdxc0EkOHmu1jUpUF5DUvt4WdgbctFwXKE2LG6g3XiKbcqlgdqlrdHH4PxypkXVqODY8bP9yDNL01GsN7gSXxsgQApY9LcTRf5fDNhlbnUkgYL53xvf6BO6+7cc4CEUdipSgtcQ3l29N6z+Ppx051ks3w5Bp4bbL2nM5+EHgGiufLgky31aRUuvcaTxuUKeCYqNvZ26FwkOMwpTOzLZMUn42Pmn7bqrHq2a70Obj0zAX2jMCAwEAAQ==
+              -----END PUBLIC KEY-----
+            jwt_header: "X-Auth-Token"
+            jwt_url_parameter: null
+            subject_key: "sub"
+            roles_key: "roles"
+        authentication_backend:
+          type: noop
       basic_internal_auth_domain:
+        enabled: true
+        order: 1
+        http_enabled: true
+        transport_enabled: true
         http_authenticator:
           type: basic
+          challenge: true
         authentication_backend:
           type: intern
